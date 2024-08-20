@@ -1,3 +1,4 @@
+
 body, html {
     height: 100%;
     background-image: url("assets/bg.jpg");
@@ -5,11 +6,6 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
   }  
-
-body{
-    margin-left: 5rem;
-    margin-top: 3rem;
-}
 
 h1 {
     color: white;
@@ -21,6 +17,7 @@ h2{
     font-family: "Outfit", sans-serif;
     color: #d20094;
     font-size: 2.5rem;
+    margin-bottom: 0%;
 }
 
 p, li, label {
@@ -66,4 +63,17 @@ input[type='radio']{
 
 .questionNumber{
 
+}
+
+div{
+    margin-left: 5rem;
+}
+
+header{
+    margin-top: 3rem;
+    margin-left: 5rem;
+}
+
+form{
+    margin-left: 5rem;
 }
