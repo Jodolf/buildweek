@@ -8,7 +8,8 @@ body, html {
   }  
 
   body{
-    margin-left: 5rem;
+    padding-top: 3rem;
+    padding-left: 5rem;
   }
 
 h1 {
@@ -67,8 +68,4 @@ input[type='radio']{
 
 .questionNumber{
 
-}
-
-header{
-    margin-top: 3rem;
 }
