@@ -9,11 +9,13 @@ body, html {
 h1 {
     color: white;
     font-family: "Outfit", sans-serif;
+    font-size: 5rem;
 }
 
 h2{
     font-family: "Outfit", sans-serif;
     color: #d20094;
+    font-size: 2.5rem;
 }
 
 p, li, label {
@@ -47,7 +49,13 @@ input[type='checkbox']:focus {
     box-shadow: 0px 2px 24px 2px #00ffff;
 }
 
+input[type='radio']{
+    accent-color: #00ffff;
+    transition: 0.3s;
+}
+
 .logo{
+    width: 10rem;
 }
 
 .questionNumber{
