@@ -201,3 +201,38 @@ input[type='radio']{
     justify-content: center;
 }
 
+#timer {
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 10em;
+    top: 2em;
+  }
+  
+  #circle {
+    fill: transparent;
+    stroke-width: 15px;
+    stroke-dasharray: 450;
+    stroke: #00ffff;
+    position: relative;
+    transform: translate(30px, 30px);
+  }
+  
+  svg {
+    width: 200px;
+    height: 300px;
+  }
+  
+  #timer p {
+    position: absolute;
+    top: 55px;
+    font-size: 0.5em;
+    text-align: center;
+  }
+  
+  .seconds {
+    font-size: 5em;
+  }
+  
