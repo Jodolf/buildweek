@@ -21,8 +21,8 @@
 
 <body>
     <header><img class="logo" src="assets/epicode_logo.png" alt="Logo"></header>
-    <div>
-        <h1 class="questionText"> <span style="font-weight: 200;">Question </span><br> text test</h1>
+    <div class="questionText">
+        <h1> <span style="font-weight: 200;">Question </span><br> text test</h1>
     </div>
     <div>
         <p>
@@ -31,29 +31,47 @@
             </span>
         </p>
     </div>
-    <form action="submit">
-        <input id="answerOne" type="radio" name="answerOne">
-        <label for="answerOne"> Answer test. </label>
+    <div class="questionContainer">
+        <form id="questionList" action="submit">
 
-        <input id="answerTwo" type="radio" name="answerTwo">
-        <label for="answerTwo"> Answer test. </label>
+            <button id="answerOne" type="radio" name="answerOne">Uno</button>
+            <button id="answerTwo" type="radio" name="answerTwo">Due</button>
+            <button id="answerThree" type="radio" name="answerThree">Tre</button>
+            <button id="answerFour" type="radio" name="answerFour">Quattro</button>
 
-        <input id="answerThree" type="radio" name="answerThree">
-        <label for="answerThree"> Answer test. </label>
+            <!--<div class="question">
+            <input id="answerOne" type="radio" name="answerOne">
+            <label for="answerOne"> Answer test.</label>
+        </div>
 
-        <input id="answerFour" type="radio" name="answerFour">
-        <label for="answerFour"> Answer test. </label>
+        <div class="question">
+            <input id="answerTwo" type="radio" name="answerTwo">
+            <label for="answerTwo"> Answer test.</label>
+        </div>
 
-        <button id="submit">SUBMIT</button>
-    </form>
+        <div class="question">
+            <input id="answerThree" type="radio" name="answerThree">
+            <label for="answerThree"> Answer test.</label>
+
+            <div class="question">
+                <input id="answerFour" type="radio" name="answerFour">
+                <label for="answerFour"> Answer test.</label>
+            </div>
+            <button id="submit">SUBMIT</button>-->
+        </form>
+    </div>
+
     <div>
-        <p> Question
-            <span class="questionNumber">
-                1
+        <p class="counterQuestion"> QUESTION &nbsp
+            <span class="questionNumber"> 
+                1 &nbsp
             </span>
-            /10
+            <span style="color: #d20094;">
+            / 10
+        </span>
         </p>
     </div>
 </body>
 <script src="script.js"></script>
+
 </html>
