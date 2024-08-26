@@ -96,10 +96,6 @@ input[type='radio']{
     width: 10rem;
 }
 
-.questionNumber{
-
-}
-
 #proceed-form {
     margin-top: 50px;
     width: 60%;
@@ -111,7 +107,6 @@ input[type='radio']{
 .questionContainer{
     display: flex;
     justify-content: center;
-    align-content: center;
 }
 
 #questionList{
@@ -122,15 +117,11 @@ input[type='radio']{
     flex-wrap: wrap;
     align-content: center;
     align-content: space-around;
+    position: absolute;
+    bottom: 200px;
 }
 
 .questionText{
-    display: flex;
-    justify-content: center;
-}
-
-.counterQuestion{
-    margin-top: 12rem;
     display: flex;
     justify-content: center;
 }
@@ -141,7 +132,7 @@ input[type='radio']{
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 10em;
+    right: 5em;
     top: 2em;
   }
   
@@ -170,7 +161,7 @@ input[type='radio']{
     font-size: 5em;
   }
   
-  #variabileDomanda{
+  #quiz-question{
     width: 60%;
     text-align: center;
     font-size: 4rem;
@@ -180,3 +171,8 @@ input[type='radio']{
     text-align: center;
   }
 
+  #counterQuestionContainer{
+  position: absolute;  
+  bottom: 10px;
+  left: 48%;
+}
