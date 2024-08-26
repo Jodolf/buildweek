@@ -212,14 +212,13 @@ timerSeconds();
 
 function resultPage() {
   if (indexQuestion >= questions.length) {
-    const punteggio = verifica();
-    console.log("Punteggio calcolato:", punteggio); // Debug: Verifica il punteggio calcolato
+    let punteggio = verifica();
+    console.log("Punteggio calcolato:", punteggio);
     localStorage.setItem("punteggio", punteggio);
     console.log(
       "Punteggio salvato nel localStorage:",
       localStorage.getItem("punteggio")
-    ); // Debug: Verifica il valore salvato
-    // Reindirizza alla pagina dei risultati
+    ); 
     window.location.href = "index-results.html";
   }
 }
