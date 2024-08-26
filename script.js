@@ -94,32 +94,31 @@ const questions = [
   },
 ];
 
-// Dichiarare le variabili come gli elementi che mi servono
+// VARIABILI
 let button = document.getElementsByTagName("button");
 let variableQuestion = document.getElementById("quiz-question");
 let questBtn = document.querySelectorAll(".selectBtn");
 
-let indexVerifica = 0
-let indexQuestion = 0
-let indexAnswer = 0
-let indexCounter = 1
-let punteggio = 0
-let timer = 0
-let intervalId
-let elencoRisposte = []
+let indexVerifica = 0;
+let indexQuestion = 0;
+let indexAnswer = 0;
+let indexCounter = 1;
+let punteggio = 0;
+let timer = 0;
+let intervalId;
+let elencoRisposte = [];
 
-// FUNZIONE per la generazione della domanda secondo l'indice domande
-
+// GENERAZIONE DOMANDE
 function question(index) {
-  if(variableQuestion !== null){
-  variableQuestion.innerHTML = `${questions[index].question}`;
-  }else{
-    console.log("no element in the page")
+  if (variableQuestion !== null) {
+    variableQuestion.innerHTML = `${questions[index].question}`;
+  } else {
+    console.log("no element in the page");
   }
 }
 
+// RANDOMIZZAZIONE POSIZIONE RISPOSTE
 function answer(index) {
-  //FUNZIONE per la generazione delle risposte randomizzando la prima di posizione e piazzando le rimanenti sui i blocchi liberi
   let randomCorrect = randomAnswer();
 
   //GENERO UN NUMERO CAUSALE PER POSIZIONARE LA RISPOSTA ESATTA (AD OGNI REFRESH AVRA' POSIZIONE DIVERSA)
@@ -127,58 +126,51 @@ function answer(index) {
     button[randomCorrect].innerHTML = questions[index].correct_answer;
   }
 
-  let remainingButtons = [0, 1, 2, 3].filter(i => i !== randomCorrect);
+  let remainingButtons = [0, 1, 2, 3].filter((i) => i !== randomCorrect);
 
   for (let i = 0; i < remainingButtons.length; i++) {
     if (button[remainingButtons[i]]) {
-      button[remainingButtons[i]].innerHTML = questions[index].incorrect_answers[i];
+      button[remainingButtons[i]].innerHTML =
+        questions[index].incorrect_answers[i];
     }
   }
 }
 
-
 question(0);
 answer(0);
 
-// function invioRisposta(risposta) {
-//   let check = risposta;
-//   let corretto;
-//   if (check == button[0].value) {
-//     corretto = button[0].value;
-//   }
-// }
-
+// GENERA NUMERO CASUALE
 function randomAnswer() {
-  // FUNZIONE GENERA NUMERO CASUALE
   let num = Math.round(Math.random() * 3);
   return num;
 }
 
+// INCREMENTI
 for (let i = 0; i < questBtn.length; i++) {
   questBtn[i].addEventListener("click", function () {
     event.preventDefault();
     timerSeconds();
-  
+
     // Salva la risposta selezionata
     let rispostaSelezionata = this.innerHTML;
     elencoRisposte[indexQuestion] = rispostaSelezionata;
-  
+
     // Incrementa le domande
     indexQuestion++;
     question(indexQuestion);
-  
+
     // Incrementa le risposte
     indexAnswer++;
     answer(indexAnswer);
-  
+
     // Incrementa il counter
     indexCounter++;
     document.querySelector(".questionNumber").innerHTML = indexCounter;
     console.log(timerSeconds());
-  });  
+  });
 }
 
-// Timer function
+// TIMER
 
 function timerSeconds() {
   let set = 30;
@@ -194,7 +186,7 @@ function timerSeconds() {
       seconds.style.strokeDashoffset = offset;
       seconds.style.transition = "stroke-dashoffset 0.9s linear";
     }
-    
+
     let lastSec = set < 10 ? "0" + set : set;
     const secondsElement = document.querySelector(".seconds");
     if (secondsElement) {
@@ -216,14 +208,17 @@ function timerSeconds() {
 
 timerSeconds();
 
-// Reindirizza a pagina risultati
+// STORE PUNTEGGIO E LINK A PAGINA RISULTATI
 
 function resultPage() {
   if (indexQuestion >= questions.length) {
     const punteggio = verifica();
-    console.log('Punteggio calcolato:', punteggio); // Debug: Verifica il punteggio calcolato
-    localStorage.setItem('punteggio', punteggio);
-    console.log('Punteggio salvato nel localStorage:', localStorage.getItem('punteggio')); // Debug: Verifica il valore salvato
+    console.log("Punteggio calcolato:", punteggio); // Debug: Verifica il punteggio calcolato
+    localStorage.setItem("punteggio", punteggio);
+    console.log(
+      "Punteggio salvato nel localStorage:",
+      localStorage.getItem("punteggio")
+    ); // Debug: Verifica il valore salvato
     // Reindirizza alla pagina dei risultati
     window.location.href = "index-results.html";
   }
@@ -234,8 +229,8 @@ document.getElementById("answerTwo").addEventListener("click", resultPage);
 document.getElementById("answerThree").addEventListener("click", resultPage);
 document.getElementById("answerFour").addEventListener("click", resultPage);
 
-//Calcola risultato
-let punteggioFinale = 0
+// CALCOLO RISULTATO
+let punteggioFinale = 0;
 
 function verifica() {
   punteggioFinale = 0;
@@ -247,12 +242,11 @@ function verifica() {
   return punteggioFinale;
 }
 
+let answerResult = verifica(0);
+console.log(answerResult);
 
-let answerResult = verifica(0)
-console.log(answerResult)
-//Risultato a schermo
-
-let finalResult = document.getElementById("finalResult");
+// RISULTATO A SCHERMO
+/*let finalResult = document.getElementById("finalResult");
 let result = answerResult
 
 function pushNumber() {
@@ -262,5 +256,4 @@ function pushNumber() {
   } else {
     console.log("L'elemento non esiste");
   }
-}
-
+}*/
