@@ -183,57 +183,46 @@ function timerSeconds() {
   const seconds = document.querySelector("#circle");
 
   if (intervalId) {
-    clearInterval(intervalId); // Ferma il timer precedente
+    clearInterval(intervalId);
   }
 
-  // Funzione per aggiornare il display e lo strokeDashoffset
   const updateDisplay = () => {
-    // Aggiorna lo strokeDashoffset basato sui secondi rimanenti
     const offset = 450 - (set / 30) * 450;
-    var seconds = document.querySelector('#seconds');
-
-// Verifica se l'elemento esiste
-if (seconds) {
-    // Se l'elemento esiste, esegui il codice
-    seconds.style.strokeDashoffset = offset;
-} else {
-    // L'elemento non esiste, puoi gestire la situazione qui se necessario
-    console.log("L'elemento non esiste nella pagina");
-}
-
-
-    // Aggiorna il resto dei secondi, mantenendo il formato "00"
+    if (seconds) {
+      seconds.style.strokeDashoffset = offset;
+      seconds.style.transition = "stroke-dashoffset 0.9s linear";
+    }
+    
     let lastSec = set < 10 ? "0" + set : set;
     const secondsElement = document.querySelector(".seconds");
-if (secondsElement) {
-    secondsElement.innerHTML = lastSec;
+    if (secondsElement) {
+      secondsElement.innerHTML = lastSec;
+    }
   };
 
   updateDisplay();
 
-  // Imposta la transizione per lo strokeDashoffset
-  seconds.style.transition = "stroke-dashoffset 0.9s linear";
-
   intervalId = setInterval(() => {
     set--;
-
     if (set < 0) {
-      clearInterval(intervalId); // Ferma il timer quando raggiunge 0
+      clearInterval(intervalId);
       return;
     }
-
-    updateDisplay(); // Aggiorna il display e lo strokeDashoffset
-  }, 1000); // Imposta l'intervallo a 1 secondo
+    updateDisplay();
+  }, 1000);
 }
 
-//timerSeconds();
+timerSeconds();
 
 // Reindirizza a pagina risultati
 
-function resultPage(){
-  if(indexQuestion >= questions.length)
+function resultPage() {
+  if (indexQuestion >= questions.length) {
+    const punteggio = verifica();
+    localStorage.setItem('punteggio', punteggio);
+    // Reindirizza alla pagina dei risultati
     window.location.href = "index-results.html";
-  pushNumber()
+  }
 }
 
 document.getElementById("answerOne").addEventListener("click", resultPage);
@@ -244,16 +233,16 @@ document.getElementById("answerFour").addEventListener("click", resultPage);
 //Calcola risultato
 let punteggioFinale = 0
 
-function verifica (indexVerifica) {
-  console.log (elencoRisposte[indexVerifica])
-  console.log (questions[indexVerifica].correct_answer)
-  if (elencoRisposte[indexVerifica] === questions[indexVerifica].correct_answer) {
-    punteggioFinale++ 
-  } else {
-    punteggioFinale
+function verifica() {
+  punteggioFinale = 0;
+  for (let i = 0; i < questions.length; i++) {
+    if (elencoRisposte[i] === questions[i].correct_answer) {
+      punteggioFinale++;
+    }
   }
-  return punteggioFinale
+  return punteggioFinale;
 }
+
 
 let answerResult = verifica(0)
 console.log(answerResult)
@@ -262,11 +251,12 @@ console.log(answerResult)
 let finalResult = document.getElementById("finalResult");
 let result = answerResult
 
-function pushNumber(){
+function pushNumber() {
+  const finalResult = document.getElementById("finalResult");
   if (finalResult) {
-    finalResult.innerHTML = result;
-    }else{
-    console.log("elemento non esiste")
-    }
+    finalResult.innerHTML = verifica();
+  } else {
+    console.log("L'elemento non esiste");
+  }
 }
-}
+
